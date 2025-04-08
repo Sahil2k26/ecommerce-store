@@ -16,7 +16,7 @@ export interface Product {
     price:string
     isFeatured:boolean
     isArchived:boolean
-    categoryId:string
+    category:Category
     size:Size
     color:Color
     images:Image[]
