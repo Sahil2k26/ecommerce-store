@@ -9,7 +9,7 @@ export function Billboard({ data }: BillboardProps) {
         <div className="p-4 sm:p-6 lg:p-8 rounded-xl overflow-hidden">
             <div 
                 style={{ backgroundImage: `url(${data.imageUrl})` }} 
-                className="h-64 lg:min-h-96  bg-cover bg-center  rounded-xl relative aspect-auto md:aspect-[3/1] overflow-hidden"
+                className="sm:h-64 lg:min-h-96  bg-cover bg-center  rounded-xl relative aspect-square  sm:aspect-auto  lg:aspect-[3/1] overflow-hidden"
             >
                 <div className="h-full w-full flex flex-col justify-center items-center text-center gap-y-8 ">
                     <div className="font-bold text-3xl sm:text-5xl lg:text-6xl sm:max-w-xl max-w-xs">

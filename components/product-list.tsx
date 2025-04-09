@@ -1,6 +1,5 @@
 import { Product } from "@/types"
 import { NoResult } from "./ui/no-result"
-import { it } from "node:test"
 import { ProductCard } from "./ui/product-card"
 
 interface ProductListProps {

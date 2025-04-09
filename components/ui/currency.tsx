@@ -1,3 +1,4 @@
+"use client"
 import { formatter } from "@/lib/utils";
 import { useEffect, useState } from "react";
 

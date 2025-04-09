@@ -4,7 +4,7 @@ import axios from "axios"
 import qs from "query-string"
 interface Query{
     categoryId?:string
-    coloId?:string
+    colorId?:string
     sizeId?:string
     isFeatured?:boolean
 
@@ -16,7 +16,7 @@ const getProducts =async (query:Query):Promise<Product[]> => {
     const url=qs.stringifyUrl({
         url:URL,
         query:{
-            colorId:query.coloId,
+            colorId:query.colorId,
             sizeId:query.sizeId,
             categoryId:query.categoryId,
             isFeatured:query.isFeatured,
