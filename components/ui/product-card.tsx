@@ -6,14 +6,30 @@ import { Button } from "./button"
 import { Expand, ShoppingCart } from "lucide-react"
 import { Currency } from "./currency"
 import { useRouter } from "next/navigation"
+import { MouseEventHandler } from "react"
+import usePreviewModal from "@/hooks/use-preiew-modal"
+import useCart from "@/hooks/use-cart"
 
 interface ProductCardProps {
     data: Product
 }
 export function ProductCard({data}: ProductCardProps) {
     const router=useRouter();
+    const previewModal=usePreviewModal();
+    const cart=useCart();
     const handleClick= () => {
         router.push(`/product/${data.id}`)
+    }
+
+    const onPreview:MouseEventHandler<HTMLButtonElement> = (event) =>{
+        event.stopPropagation();
+        previewModal.onOpen(data)
+
+    }
+    const onAddtoCart:MouseEventHandler<HTMLButtonElement> = (event) =>{
+        event.stopPropagation();
+        cart.addItem(data);
+
     }
     return <div onClick={handleClick} className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4 ">
         <div className="aspect-square rounded-xl bg-gray-100 relative">
@@ -28,7 +44,7 @@ export function ProductCard({data}: ProductCardProps) {
                     <Button
                         variant={"outline"}
                         size={"icon"}
-                        onClick={() => {}}
+                        onClick={onPreview}
                         className="rounded-full "
                     >
                         <Expand size={20} className="text-gray-600"></Expand>
@@ -36,7 +52,7 @@ export function ProductCard({data}: ProductCardProps) {
                     <Button
                         variant={"outline"}
                         size={"icon"}
-                        onClick={() => {}}
+                        onClick={onAddtoCart}
                         className="rounded-full "
                     >
                         <ShoppingCart size={20} className="text-gray-600" />
