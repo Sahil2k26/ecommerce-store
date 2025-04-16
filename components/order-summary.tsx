@@ -29,7 +29,10 @@ export function OrderSummary(){
         const res=await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`,{
             productIds:items.map((item)=>item.id)
         })
-        window.location=res.data.url;
+        removeAll();
+        toast.success("Order created successfuly!")
+        
+        //window.location=res.data.url;
     }
 
     return (
@@ -44,6 +47,7 @@ export function OrderSummary(){
                 </div>
                 <Button className="w-full mt-6 rounded-2xl py-5 px-2 "
                     onClick={onCheckOut}
+                    disabled={items.length===0}
                 >
                     Checkout
                 </Button>

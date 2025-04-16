@@ -14,7 +14,7 @@ const font = Urbanist({
 
 
 export const metadata: Metadata = {
-  title: "Store",
+  title: "Jagdamba Store",
   description: "Your one-stop shop for all things tech",
 };
 
