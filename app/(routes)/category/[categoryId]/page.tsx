@@ -7,6 +7,7 @@ import Container from "@/components/ui/container"
 import { Filter } from "./components/filter"
 import ProductList from "@/components/product-list"
 import { MobileFilters } from "./components/mobile-filters"
+import getBillboard from "@/actions/get-billboard"
 
 export const revalidate=0
 
@@ -28,12 +29,13 @@ export default async function CategoryPage({params,searchParams}:CategoryPagePro
     const sizes=await getSizes();
     const colors=await getColors();
     const category=await getCategory(categoryId);
+    const billboardData=await getBillboard(category.Billboard.id)
 
     return (
         <div className="bg-white">
             <Container>
                 <Billboard
-                    data={category.Billboard}
+                    data={billboardData}
                 />
                 <div className="px-4 sm:px-6 lg:px-6 pb-24">
                     <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">

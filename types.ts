@@ -1,7 +1,8 @@
 export interface Billboard {
     id:string
     label:string
-    imageUrl:string
+    images:Image[]
+    toShowLabel:boolean
 }
 
 export interface Category {
