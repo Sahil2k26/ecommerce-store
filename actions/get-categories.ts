@@ -1,9 +1,10 @@
 
-import { Category } from "@/types"
+import { BASE_URL } from "@/config/base";
+import { Category } from "@/config/types"
 import axios from "axios"
 
-const url=`${process.env.NEXT_PUBLIC_API_URL}/categories`
-const getCategories =async ():Promise<Category[]> => {
+const url = `${BASE_URL}/categories`
+const getCategories = async (): Promise<Category[]> => {
     const res = await axios.get(url);
     return res.data.categories
 }

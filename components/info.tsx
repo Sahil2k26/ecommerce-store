@@ -1,5 +1,5 @@
 "use client"
-import { Product } from "@/types";
+import { Product } from "@/config/types";
 import { Currency } from "./ui/currency";
 import { Circle, ShoppingCart } from "lucide-react";
 import { Button } from "./ui/button";
@@ -7,11 +7,11 @@ import useCart from "@/hooks/use-cart";
 import { MouseEventHandler } from "react";
 
 interface InfoProps {
-    data:Product
+    data: Product
 }
-export function Info({data}:InfoProps){
-    const cart=useCart();
-    const onAddToCart:MouseEventHandler<HTMLButtonElement>=(event)=>{
+export function Info({ data }: InfoProps) {
+    const cart = useCart();
+    const onAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
         event.stopPropagation()
         cart.addItem(data);
     }

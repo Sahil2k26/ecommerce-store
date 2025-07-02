@@ -1,6 +1,6 @@
 "use client"
 
-import { Product } from "@/types"
+import { Product } from "@/config/types"
 import Image from "next/image"
 import { Button } from "./button"
 import { Expand, ShoppingCart } from "lucide-react"
@@ -13,20 +13,20 @@ import useCart from "@/hooks/use-cart"
 interface ProductCardProps {
     data: Product
 }
-export function ProductCard({data}: ProductCardProps) {
-    const router=useRouter();
-    const previewModal=usePreviewModal();
-    const cart=useCart();
-    const handleClick= () => {
+export function ProductCard({ data }: ProductCardProps) {
+    const router = useRouter();
+    const previewModal = usePreviewModal();
+    const cart = useCart();
+    const handleClick = () => {
         router.push(`/product/${data.id}`)
     }
 
-    const onPreview:MouseEventHandler<HTMLButtonElement> = (event) =>{
+    const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
         event.stopPropagation();
         previewModal.onOpen(data)
 
     }
-    const onAddtoCart:MouseEventHandler<HTMLButtonElement> = (event) =>{
+    const onAddtoCart: MouseEventHandler<HTMLButtonElement> = (event) => {
         event.stopPropagation();
         cart.addItem(data);
 

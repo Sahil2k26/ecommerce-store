@@ -4,16 +4,16 @@ import { CartItem } from "@/components/cart-item"
 import { OrderSummary } from "@/components/order-summary"
 import Container from "@/components/ui/container"
 import useCart from "@/hooks/use-cart"
-import { ShoppingBasket, ShoppingCartIcon } from "lucide-react"
+import { ShoppingCartIcon } from "lucide-react"
 import { useEffect, useState } from "react"
 
-export default function CartPage(){
-    const [isMounted,setMounted]=useState(false)
-    const cart=useCart();
-    useEffect(()=>{
+export default function CartPage() {
+    const [isMounted, setMounted] = useState(false)
+    const cart = useCart();
+    useEffect(() => {
         setMounted(true)
-    },[])
-    if(!isMounted) return null;
+    }, [])
+    if (!isMounted) return null;
     return (
         <div className="bg-white">
             <Container>
@@ -24,19 +24,19 @@ export default function CartPage(){
                     </div>
                     <div className="mt-12 lg:grid lg:grid-cols-12 lg:items-start gap-x-12 ">
                         <div className="lg:col-span-7">
-                            {cart.items.length==0 && <p className="text-neutral-500 ">No items added to cart</p>}
+                            {cart.items.length == 0 && <p className="text-neutral-500 ">No items added to cart</p>}
                             <ul>
-                                {cart.items.map((item)=>(
-                                    <CartItem 
+                                {cart.items.map((item) => (
+                                    <CartItem
                                         key={item.id}
                                         data={item}
                                     ></CartItem>
                                 ))}
                             </ul>
                         </div>
-                        <OrderSummary/>  
+                        <OrderSummary />
                     </div>
-                    
+
                     <div>
 
                     </div>

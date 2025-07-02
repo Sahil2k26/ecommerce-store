@@ -1,4 +1,3 @@
-import getBillboard from "@/actions/get-billboard";
 import getBillboards from "@/actions/get-billboards";
 import getProducts from "@/actions/get-products";
 import { Billboard } from "@/components/billboard";
@@ -7,10 +6,10 @@ import Container from "@/components/ui/container";
 
 export const revalidate = 0; // 0 means no revalidation, 1 means revalidate every second, etc.
 export default async function HomePage() {
-  const products=await getProducts({ isFeatured: true });
-  const res=await getBillboards();
-  const data=res[0];
-  return(
+  const products = await getProducts({ isFeatured: true });
+  const res = await getBillboards();
+  const data = res[0];
+  return (
     <Container>
       <div className="space-y-10 pb-10">
         <Billboard data={data} />

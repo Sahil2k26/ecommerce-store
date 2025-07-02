@@ -1,4 +1,4 @@
-import { Billboard as BillboardType} from "@/types";
+import { Billboard as BillboardType } from "@/config/types";
 import { AutoCarousel } from "./auto-carousel";
 
 interface BillboardProps {
@@ -8,7 +8,21 @@ interface BillboardProps {
 export function Billboard({ data }: BillboardProps) {
     return (
         <div className="p-4 sm:p-6 lg:p-8 rounded-xl overflow-hidden">
-            <AutoCarousel data={data} />
+            <div
+                style={{ backgroundImage: `url(${data.images[0].url})` }}
+                className="sm:h-64 lg:min-h-96  bg-cover bg-center  rounded-xl relative aspect-square  sm:aspect-auto  lg:aspect-[3/1] overflow-hidden"
+            >
+                <div className="h-full w-full flex flex-col justify-center items-center text-center gap-y-8 ">
+                    <div className="font-bold text-3xl sm:text-5xl lg:text-6xl sm:max-w-xl max-w-xs">
+                        {data.label}!
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {/* <AutoCarousel data={data} /> */}
         </div>
     )
 }

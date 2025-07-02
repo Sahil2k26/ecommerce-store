@@ -7,31 +7,32 @@ import useCart from "@/hooks/use-cart"
 import { useSearchParams } from "next/navigation"
 import { useEffect } from "react"
 import toast from "react-hot-toast"
+import { BASE_URL } from "@/config/base"
 
 
-export function OrderSummary(){
-    const items=useCart((state)=>state.items);
-    const removeAll=useCart((state)=>state.removeAll)
-    const searchParams=useSearchParams()
+export function OrderSummary() {
+    const items = useCart((state) => state.items);
+    const removeAll = useCart((state) => state.removeAll)
+    const searchParams = useSearchParams()
 
-    useEffect(()=>{
-        if(searchParams.get("success")){
+    useEffect(() => {
+        if (searchParams.get("success")) {
             toast.success("Payment Successfull! ")
             removeAll();
         }
-        if(searchParams.get("canceled")){
+        if (searchParams.get("canceled")) {
             toast.error("Payment Unsuccessfull")
         }
-    },[searchParams,removeAll])
+    }, [searchParams, removeAll])
 
-    const totalPrice = items.reduce((total,item)=>{ return total+Number(item.price)}, 0);
-    const onCheckOut=async ()=>{
-        const res=await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`,{
-            productIds:items.map((item)=>item.id)
+    const totalPrice = items.reduce((total, item) => { return total + Number(item.price) }, 0);
+    const onCheckOut = async () => {
+        const res = await axios.post(`${BASE_URL}/checkout`, {
+            productIds: items.map((item) => item.id)
         })
         removeAll();
         toast.success("Order created successfuly!")
-        
+
         //window.location=res.data.url;
     }
 
@@ -47,13 +48,13 @@ export function OrderSummary(){
                 </div>
                 <Button className="w-full mt-6 rounded-2xl py-5 px-2 "
                     onClick={onCheckOut}
-                    disabled={items.length===0}
+                    disabled={items.length === 0}
                 >
                     Checkout
                 </Button>
 
             </div>
-            
+
         </div>
     )
 }

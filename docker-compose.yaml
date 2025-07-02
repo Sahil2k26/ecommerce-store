@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  storefront-preview:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: store
+    container_name: storefront-preview
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./:/src
+      - /src/node_modules
+    environment:
+      StoreName: ${StoreName}
+      StoreId: ${StoreId}
