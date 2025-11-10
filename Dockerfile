@@ -1,18 +1,20 @@
 # Base image
 FROM node:22-alpine AS base
 
-# Set working directory
-WORKDIR /src
+WORKDIR /app
 
-# Install dependencies (leverage caching)
+# Install dependencies
 COPY package.json package-lock.json* ./
-RUN npm install
+RUN npm ci
 
-# Copy rest of the source code
+# Copy source code
 COPY . .
 
-# Expose Next.js default port
-EXPOSE 3001
+# Build the Next.js app
+RUN npm run build
 
-# Use .env file if present (Next.js handles this automatically)
-CMD ["npm", "run", "dev"]
+# Expose the port
+EXPOSE 3000
+
+# Start the app
+CMD ["npm", "run", "start"]
