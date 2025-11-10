@@ -3,7 +3,7 @@ import Container from "@/components/ui/container";
 import MainNav from "@/components/ui/main-nav";
 import getCategories from "@/actions/get-categories";
 import NavbarActions from "./navbar-actions";
-import { ShoppingBasket, Store } from "lucide-react";
+import { ShoppingBasket } from "lucide-react";
 export const revalidate = 0; // Disable revalidation for this component
 
 

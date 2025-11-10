@@ -1,7 +1,6 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
 import { Color, Size } from "@/config/types"
 import { useRouter, useSearchParams } from "next/navigation"
 import qs from "query-string"

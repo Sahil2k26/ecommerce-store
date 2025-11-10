@@ -10,6 +10,7 @@ import toast from "react-hot-toast"
 import { BASE_URL } from "@/config/base"
 
 
+
 export function OrderSummary() {
     const items = useCart((state) => state.items);
     const removeAll = useCart((state) => state.removeAll)
@@ -30,8 +31,11 @@ export function OrderSummary() {
         const res = await axios.post(`${BASE_URL}/checkout`, {
             productIds: items.map((item) => item.id)
         })
+        console.log(res.data);
         removeAll();
         toast.success("Order created successfuly!")
+        toast.success("Pick up your items from the store!")
+
 
         //window.location=res.data.url;
     }

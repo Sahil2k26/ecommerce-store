@@ -1,5 +1,4 @@
 import { Billboard as BillboardType } from "@/config/types";
-import { AutoCarousel } from "./auto-carousel";
 
 interface BillboardProps {
     data: BillboardType;
