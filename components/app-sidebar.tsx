@@ -1,8 +1,8 @@
 "use client"
 import React from "react"
-import { useParams, usePathname } from "next/navigation"
+import { usePathname } from "next/navigation"
 import Link from "next/link"
-import { Store, ImageIcon, Grid3X3, Palette, Ruler, ShoppingCart, Package, Settings, ChevronRight, BrainCircuit, HomeIcon } from "lucide-react"
+import { Store, ChevronRight } from "lucide-react"
 
 import {
     Sidebar,
@@ -18,64 +18,6 @@ import {
 } from "@/components/ui/sidebar"
 import { Category } from "@/config/types"
 
-// Navigation items for the store management
-const navigationItems = [
-    {
-        title: "Dashboard",
-        url: "",
-        icon: HomeIcon,
-        description: "View store analytics and performance",
-    },
-    {
-        title: "Billboards",
-        url: "billboards",
-        icon: ImageIcon,
-        description: "Manage store banners and promotional content",
-    },
-    {
-        title: "Categories",
-        url: "categories",
-        icon: Grid3X3,
-        description: "Organize products into categories",
-    },
-    {
-        title: "Colors",
-        url: "colors",
-        icon: Palette,
-        description: "Define available product colors",
-    },
-    {
-        title: "Sizes",
-        url: "sizes",
-        icon: Ruler,
-        description: "Set up product size options",
-    },
-    {
-        title: "Products",
-        url: "products",
-        icon: Package,
-        description: "Manage your product inventory",
-    },
-    {
-        title: "Orders",
-        url: "orders",
-        icon: ShoppingCart,
-        description: "View and manage customer orders",
-    },
-    {
-        title: "Demand Forecast",
-        url: "demand_forecast",
-        icon: BrainCircuit,
-        description: "Demand Forecast",
-    },
-    {
-        title: "Settings",
-        url: "settings",
-        icon: Settings,
-        description: "Configure store settings",
-    },
-
-]
 
 
 export function AppSidebar({ data }: { data: Category[] }) {
